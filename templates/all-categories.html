@@ -1,0 +1,33 @@
+<div class="row"> <!-- template row container-->
+
+	<main> <!-- main content of the document. includes column width style rules -->
+
+		<article> <!-- self-contained content element -->
+			<h1>Journal Categories</h1>
+			
+			<p>
+				We have amassed knowledge in the following areas:
+			</p>
+			
+			{{ taxonomy:listing folder="blog" type="categories" }}
+				{{ if first }}
+					<ul>
+				{{ endif }}
+						
+						<li><a href="{{ url }}">{{ name }}</a></li>
+						
+				{{ if last }}
+					</ul>
+				{{ endif }}
+			{{ /taxonomy:listing }}
+
+		</article>
+
+	</main>
+
+	<div class="sidebar"> <!-- template sidebar container. includes column width style rules  -->
+		{{ theme:partial src="sub-navigation" }}
+		{{ theme:partial src="common-sidebar" }}
+	</div>
+
+</div>

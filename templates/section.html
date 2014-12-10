@@ -1,0 +1,63 @@
+<div class="row"> <!-- template row container-->
+
+	<main> <!-- main content of the document. includes column width style rules -->
+
+		<article> <!-- self-contained content element -->
+
+			{{ theme:partial src="breadcrumbs" }}
+			<h1>{{ title }}</h1>
+			{{ content|widont }}
+			
+			<hr>
+			
+			<ol class="tree roman">
+				{{ nav max_depth="5" from="{current_url}" folders_only="false" }}
+					<li>
+						<a href="{{ url }}">{{ title|smartypants|widont }}</a>
+						{{ if children }}
+						<ol>
+							{{ *recursive children* }}
+						</ol>
+						{{ endif }}
+					</li>
+				{{ /nav }}
+			</ol>
+				
+			{{ pages:previous }}
+				{{ unless no_results }}
+						<div class="pagination clearfix"> <!-- for navigation within this <main> content type -->
+							<a href="{{ url }}" class="older">
+								<small>Previously</small><br>
+								{{ title|widont }}
+							</a>
+							
+					{{ if !has_next }}
+						</div>
+					{{ endif }}
+				{{ endif }}	
+			{{ /pages:previous }}
+			
+			{{ pages:next }}
+				{{ unless no_results }}
+					{{ if !has_previous }}
+						<div class="pagination clearfix"> <!-- for navigation within this <main> content type -->
+					{{ endif }}
+						
+							<a href="{{ url }}" class="newer">
+								<small>Next Up</small><br>
+								{{ title|widont }}
+							</a>
+						</div>
+				{{ endif }}
+			{{ /pages:next }}
+		</article>
+
+	</main>
+
+	<div class="sidebar"> <!-- template sidebar container. includes column width style rules  -->
+		{{ theme:partial src="sub-navigation" }}
+		{{ theme:partial src="common-sidebar" }}
+	</div>
+
+</div>
+

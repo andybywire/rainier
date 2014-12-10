@@ -1,0 +1,43 @@
+<div class="row"> <!-- template row container-->
+	
+	<main> <!-- main content of the document. includes column width style rules -->
+		
+		<article> <!-- blog post (self-contained content) -->
+ 				<h1>{{ title|smartypants|widont }}</h1>
+				<p class="time">
+					Recorded on {{ date }}
+				</p>
+
+			{{ content|widont }}
+
+		</article>
+		
+		<div class="pagination clearfix"> <!-- for navigation within this <main> content type -->
+			
+			{{ entries:previous folder="blog" }}
+				{{ if !no_results }}
+					<a href="{{ url }}" class="older">
+						<small>« Previously</small><br>
+						{{ title|widont }}
+					</a>
+				{{ endif }}
+			{{ /entries:previous }}
+			
+			{{ entries:next folder="blog" }}
+				{{ if !no_results }}
+					<a href="{{ url }}" class="newer">
+						<small>Next Up »</small><br>
+						{{ title|widont }}
+					</a>
+				{{ endif }}
+			{{ /entries:next }}
+
+		</div>
+	
+	</main>
+	
+	<div class="sidebar"> <!-- template sidebar container. includes column width style rules  -->
+		{{ theme:partial src="common-sidebar" }}
+	</div>
+
+</div>

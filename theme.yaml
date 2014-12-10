@@ -1,0 +1,32 @@
+###########################################################################################
+#
+#  THEME VARIABLES
+#
+###########################################################################################
+
+# Theme name
+theme_name: Rainier
+
+# Comments + Disqus
+disqus_account: changeme
+show_comments: no
+
+# Global text snippets
+no_results_text: "Sorry, no results found."
+
+favorite_sites:
+  -
+    name: National Park Service
+    url: http://www.nps.gov/
+  -
+    name: REI
+    url: http://rei.com
+  -
+    name: Statamic
+    url: http://statamic.com
+
+site_twitter: andybywire
+
+# used in the feed
+site_language: en
+contact_email: you@example.com

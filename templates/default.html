@@ -1,0 +1,42 @@
+<!-- A semantic default Statamic template. "Row" and "Sidebar" are intentionally <div>, not <section> because they are layout elements; they have no "special meaning" on their own and are not a "thematic grouping of content, typically with a heading." -->
+
+<div class="row"><!-- template row container-->
+	
+	<main> <!-- main content of the document. includes column width style rules -->		
+		
+		{{ entries:listing folder="blog" limit="3" }}
+			{{ if no_results }}
+				<p class="sorry">
+					No journal posts have been posted yet.<br>
+					Check back soon.
+				</p>
+			{{ else }}
+				{{ theme:partial src="blog-listing" use_context="true" }}
+			{{ endif }}
+		{{ /entries:listing }}
+		
+		{{ entries:pagination folder="blog" limit="3" }}
+			{{ if next_page || previous_page }}
+
+				<nav class="pagination clearfix"> <!-- for navigation within this <main> content type -->
+					
+					{{ if next_page }}
+						<a href="{{ next_page }}" class="older">« Older Posts</a>
+					{{ endif }}
+
+					{{ if previous_page }}
+						<a href="{{ previous_page }}" class="newer">Newer Posts »</a>
+					{{ endif }}
+
+				</nav>
+
+			{{ endif }}
+		{{ /entries:pagination }}
+
+	</main>
+
+	<div class="sidebar"> <!-- template sidebar container. includes column width style rules  -->
+		{{ theme:partial src="common-sidebar" }}
+	</div>
+
+</div>

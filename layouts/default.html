@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ _site_name }}</title>
+  <link rel="stylesheet" href="{{ theme:css }}" />
+  <link rel="icon" type="image/png" href="{{ theme:img src="favicon.png" }}" />
+  <script src="/_themes/rainier/bower_components/modernizr/modernizr.js"></script>
+</head>
+<body>
+
+<nav class="contain-to-grid"><!-- layout: contains top bar nav contents within page width -->
+  <div class="top-bar contain-to-grid" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="{{ homepage }}">{{ _site_name|widont }}</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+    </ul>
+
+    <div class="top-bar-section"> <!-- when "section" instead of "div", breaks homepage link in "Statamic + Foundation"-->
+      <ul class="right"><!-- Right Nav Section -->
+        {{ nav from="/" exclude="camp-spots|travel-photos" max_depth="1" }}
+        <li>
+          <a href="{{ url }}" {{ if is_current || is_parent }} class="active"{{ endif }}>
+              {{ title }}
+          </a>
+        </li>
+        {{ /nav }}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="wrapper">
+
+  {{ layout_content }}
+</div><!--end wrapper-->
+
+  <footer>
+      <p>
+        the <a href="http://rainier.andyfitzgerald.org">{{ theme_name }}</a> theme <span class="delimiter">·</span> powered by <a href="http://statamic.com">Statamic</a>
+      </p>
+  </footer>
+
+
+  <script src="/_themes/rainier/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/_themes/rainier/bower_components/foundation/js/foundation.min.js"></script>
+  <script src="/_themes/rainier/bower_components/foundation/js/foundation/foundation.topbar.js"></script>
+  <script src="{{ theme:js }}"></script>
+
+</body>
+</html>
+
+

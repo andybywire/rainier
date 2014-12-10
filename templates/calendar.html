@@ -1,0 +1,54 @@
+<div class="row"> <!-- template row container-->
+
+	<main> <!-- main content of the document. includes column width style rules -->
+
+		<article> <!-- self-contained content element -->
+
+			<h1>{{ title }}</h1>
+			
+			{{ content|widont }}
+
+			{{ entries:listing folder="calendar" show_future="true" show_past="false" group_by_date="Y" sort_dir="asc" }}
+				{{ if no_results }}
+					<p class="sorry">
+						There are no events coming up. Stay tuned.
+					</p>
+				{{ else }}
+					{{ if first }}
+						<section> <!-- beginning of calendar listings -->
+					{{ endif }}
+							
+						{{ if grouped_date }}
+							<div class="divider"><span>{{ grouped_date }}</span></div>
+						{{ endif }}
+								
+							<article class="event">
+
+								<div class="date-blob">
+									<strong>{{ datestamp format="M" }}</strong>
+									<span>{{ datestamp format="j" }}</span>
+								</div>
+
+								<div class="event-description">
+									<h3>{{ title }}</h3>
+									{{ content|widont }}
+								</div>
+
+							</article>
+								
+					{{ if last }}
+						</section>
+					{{ endif }}
+				{{ endif }}
+			{{ /entries:listing }}
+
+		</article>
+
+	</main>
+
+	<div class="sidebar"> <!-- template sidebar container. includes column width style rules  -->
+		{{ theme:partial src="sub-navigation" }}
+		{{ theme:partial src="common-sidebar" }}
+	</div>
+
+</div>

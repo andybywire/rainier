@@ -1,0 +1,30 @@
+<div class="row"> <!-- template row container-->
+
+	<main> <!-- main content of the document. includes column width style rules -->
+
+		<article> <!-- self-contained content element -->
+
+			<h1>Regarding <em>{{ taxonomy_name|title }}</em></h1>
+
+			<div class="taxonomy-results">
+				{{ entries:listing folder="blog" limit="4" taxonomy="true" }}
+					{{ if no_results }}
+						<p class="sorry">
+							Nothing found for {{ taxonomy_name }}.
+						</p>
+					{{ else }}
+						{{ theme:partial src="blog-listing" use_context="true" }}
+					{{ endif }}
+				{{ /entries:listing }}
+			</div>
+			
+		</article>
+
+	</main>
+
+	<div class="sidebar"> <!-- template sidebar container. includes column width style rules  -->
+		{{ theme:partial src="sub-navigation" }}
+		{{ theme:partial src="common-sidebar" }}
+	</div>
+
+</div>
